@@ -9,15 +9,18 @@ console.log(path.join(__dirname, 'src/app/ruler/index.html'))
 
 function createRuler(){
     rulerWindow = new BrowserWindow({
-        width: 500,
-        height: 300,
+        width: 482,
+        height: 282,
         transparent: true,
         frame: false,
         resizable: true,
         hasShadow: false,
         maximizable: false,
         minimizable: false,
-        alwaysOnTop: true
+        alwaysOnTop: true,
+        webPreferences: {
+            preload: path.join(__dirname, 'src/app/preload.js')
+        }
     })
 
     rulerWindow.loadURL("file://" + path.join(__dirname, 'src/app/ruler/index.html'));

@@ -4,6 +4,8 @@ let rightLine = document.querySelector("#height");
 let heightInfo = document.querySelector("#height_info");
 let widthInfo = document.querySelector("#width_info");
 
+console.log(window.preload_complete);
+
 function setSizeInfo(){
     let height = rightLine.offsetHeight - 82;
     let width = bottomLine.offsetWidth - 82;
