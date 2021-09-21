@@ -1,19 +1,68 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html,
+body {
+    height: 100%;
 }
 
-html{
-    background: rgba(93%, 93%, 93%, .5);
+html {
+    font-size: 10px;
+    min-width: 0;
+    overflow: hidden;
 }
 
-html, body{
-    width: 100vw;
-    height: 100vh;
+body {
+    min-width: 0;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    overflow: auto;
 }
 
-button {
-    -webkit-app-region: no-drag;
-    user-select: all;
+.drag{
+    -webkit-app-region: drag;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.ruler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.ruler_line{
+    position: absolute;
+}
+
+.ruler_right{
+    right: 40px;
+    border-right: 1px solid white;
+    height: 100%;
+}
+
+.ruler_left{
+    left: 40px;
+    border-left: 1px solid white;
+    height: 100%;
+}
+
+.ruler_top{
+    top: 40px;
+    border-top: 1px solid white;
+    width: 100%;
+}
+
+.ruler_bottom{
+    bottom: 40px;
+    border-bottom: 1px solid white;
+    width: 100%;
 }
