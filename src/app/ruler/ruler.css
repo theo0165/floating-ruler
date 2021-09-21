@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    background: rgba(93%, 93%, 93%, .5);
+}
+
+html, body{
+    width: 100vw;
+    height: 100vh;
+}
+
+button {
+    -webkit-app-region: no-drag;
+    user-select: all;
+}

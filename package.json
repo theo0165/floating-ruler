@@ -1,0 +1,29 @@
+{
+  "name": "floating-ruler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "debug": "electron main.js --debug",
+    "build": "",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theo0165/floating-ruler.git"
+  },
+  "author": "Theo Sandell (theo01sandell@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theo0165/floating-ruler/issues"
+  },
+  "homepage": "https://github.com/theo0165/floating-ruler#readme",
+  "devDependencies": {
+    "electron": "^14.0.1",
+    "electron-debug": "^3.2.0"
+  },
+  "dependencies": {
+    "path": "^0.12.7"
+  }
+}
