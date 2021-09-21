@@ -4,6 +4,8 @@ let rightLine = document.querySelector("#height");
 let heightInfo = document.querySelector("#height_info");
 let widthInfo = document.querySelector("#width_info");
 
+let quitBtn = document.querySelector("#quit");
+
 console.log(window.preload_complete);
 
 function setSizeInfo(){
@@ -21,3 +23,7 @@ window.addEventListener("resize", function() {
 document.addEventListener("DOMContentLoaded", function(event) {
     setSizeInfo();
 });
+
+quitBtn.addEventListener('click', function() {
+    console.log("Quit!");
+})
