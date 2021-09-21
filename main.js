@@ -1,9 +1,11 @@
-const {app, BrowserWindow} = require("electron");
+const {app, BrowserWindow, ipcMain, Tray, Menu} = require("electron");
 
 const path = require('path');
 
 let rulerWindow;
 let settingsWindow;
+
+let trayIcon;
 
 console.log(path.join(__dirname, 'src/app/ruler/index.html'))
 
@@ -30,8 +32,35 @@ function createSettings(){
 
 }
 
+function setup(){
+    trayIcon = new Tray(path.join(__dirname, "src/static/img/icon_test.png"));
+
+    const trayTemplate = [
+        {
+            label: "New ruler",
+            click: createRuler
+        },
+        {
+            label: "Settings",
+            click: createSettings
+        },
+        {
+            type: "separator"
+        },
+        {
+            label: "Quit",
+            accelerator: "Command+Q",
+            click: () => app.quit()
+        }
+    ];
+
+    const menu = Menu.buildFromTemplate(trayTemplate);
+    trayIcon.setContextMenu(menu)
+}
+
 app.whenReady().then(() => {  
-    createRuler();
+    setup();
+    //createRuler();
     
     app.on('activate', function () {
         if (BrowserWindow.getAllWindows().length === 0) createWindow();
@@ -41,3 +70,9 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 })
+
+ipcMain.on("quit", () => {
+    BrowserWindow.getFocusedWindow().close();
+})
+
+app.dock.hide();

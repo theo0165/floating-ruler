@@ -25,5 +25,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 quitBtn.addEventListener('click', function() {
-    console.log("Quit!");
+    window.api.quit();
 })
