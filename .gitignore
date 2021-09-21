@@ -78,3 +78,5 @@ typings/
 .ds_store
 
 dist/
+
+package-lock.json
