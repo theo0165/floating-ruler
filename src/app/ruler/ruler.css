@@ -1,3 +1,21 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../../static/fonts/Roboto-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../../static/fonts/Roboto-Bold.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../../static/fonts/Roboto-Light.ttf");
+    font-weight: 300;
+}
+
 html,
 body {
     height: 100%;
@@ -11,9 +29,10 @@ html {
 
 body {
     min-width: 0;
-    font-family: 'Open Sans';
+    font-family: 'Roboto';
     font-weight: 300;
     overflow: auto;
+    background: rgba(51, 51, 51, .3);
 }
 
 .drag{
@@ -65,4 +84,39 @@ body {
     bottom: 40px;
     border-bottom: 1px solid white;
     width: 100%;
+}
+
+#height_info{
+    transform: rotate(90deg);
+    display: inline-block;
+}
+
+#width_info{
+    display: inline-block;
+}
+
+.flex_width, .flex_height{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.flex_width{
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.flex_height{
+    flex-direction: row;
+    align-items: center;
+}
+
+.flex_width > div, .flex_height > div{
+    margin-bottom: 10px;
+}
+
+#width_info, #height_info{
+    color: white;
+    font-size: 18px;
 }
