@@ -32,6 +32,10 @@ function createSettings(){
 
 }
 
+function toggleTheme(){
+    
+}
+
 function setup(){
     trayIcon = new Tray(path.join(__dirname, "src/static/img/icon_test.png"));
 
@@ -39,6 +43,10 @@ function setup(){
         {
             label: "New ruler",
             click: createRuler
+        },
+        {
+            label: "Toggle theme",
+            click: toggleTheme
         },
         {
             label: "Settings",
