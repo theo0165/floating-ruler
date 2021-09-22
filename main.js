@@ -25,11 +25,21 @@ function createRuler(){
         }
     })
 
-    rulerWindow.loadURL("file://" + path.join(__dirname, 'src/app/ruler/index.html'));
+    rulerWindow.loadURL("file://" + path.join(__dirname, 'src/app/ruler/ruler.html'));
 }
 
 function createSettings(){
+    settingsWindow = new BrowserWindow({
+        width: 400,
+        height: 300,
+        resizable: false,
+        maximizable: false,
+        webPreferences: {
+            preload: path.join(__dirname, 'src/app/preload.js')
+        }
+    })
 
+    settingsWindow.loadURL("file://" + path.join(__dirname, 'src/app/settings/settings.html'));
 }
 
 function toggleTheme(){
