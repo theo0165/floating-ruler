@@ -30,8 +30,8 @@ function createRuler(){
 
 function createSettings(){
     settingsWindow = new BrowserWindow({
-        width: 400,
-        height: 300,
+        width: 200,
+        height: 150,
         resizable: false,
         maximizable: false,
         webPreferences: {
