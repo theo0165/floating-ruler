@@ -9,3 +9,19 @@ body{
     background-color: rgb(var(--background-color));
     color: white;
 }
+
+.input_form{
+    margin: 10px;
+}
+
+.input_form > div{
+    margin: 11px 0;
+}
+
+#version{
+    position: absolute;
+    z-index: 99;
+    bottom: 5px;
+    left: 11px;
+    font-size: 12px;
+}

@@ -73,7 +73,7 @@ function setup(){
     ];
 
     const menu = Menu.buildFromTemplate(trayTemplate);
-    trayIcon.setContextMenu(menu)
+    trayIcon.setContextMenu(menu);
 }
 
 app.whenReady().then(() => {  
@@ -93,4 +93,10 @@ ipcMain.on("quit", () => {
     BrowserWindow.getFocusedWindow().close();
 })
 
+ipcMain.on("getVersion", (event, arg) => {
+    console.log("Get version")
+    event.reply("sendVersion", app.getVersion());
+})
+
 app.dock.hide();
+console.log(app.getVersion());

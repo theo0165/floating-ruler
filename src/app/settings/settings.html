@@ -9,23 +9,32 @@
     <link rel="stylesheet" href="./settings.css">
 </head>
 <body>
-    <form action="">
-        <input type="checkbox" name="autostart" id="autostart"><label for="autostart"> Open at login</label><br />
-        <label for="theme">Theme: </label>
-        <select id="theme" name="thems">
-            <!-- TODO: Default selected -->
-            <option value="dark">Dark</option>
-            <option value="light">Light</option>
-        </select><br />
+    <form action="" class="input_form">
+        <div>
+            <input type="checkbox" name="autostart" id="autostart">
+            <label for="autostart"> Open at login</label><br />
+        </div>
+
+        <div>
+            <label for="theme">Theme: </label>
+            <select id="theme" name="thems">
+                <!-- TODO: Default selected -->
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+            </select><br />
+        </div>
         
-        <label for="units">Units: </label>
-        <select name="units" id="units">
-            <!-- TODO: Default selected -->
-            <option value="px">Pixles</option>
-            <option value="pt">Points</option>
-            <option value="mm">Millimeters</option>
-        </select>
+        <div>
+            <label for="units">Units: </label>
+            <select name="units" id="units">
+                <!-- TODO: Default selected -->
+                <option value="px">Pixles</option>
+                <option value="pt">Points</option>
+                <option value="mm">Millimeters</option>
+            </select>
+        </div>
     </form>
+    <span id="version">Version</span>
     <script src="./settings.js"></script>
 </body>
 </html>

@@ -4,8 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js",
-    "debug": "electron main.js --debug",
+    "start": "electron .",
+    "debug": "electron . --debug",
     "build": "electron-packager . ruler --overwrite --platform=darwin --arch=all --icon=src/static/img/icon_placeholder.icns --prune=true --out=dist",
     "test": ""
   },
