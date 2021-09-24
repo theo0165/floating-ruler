@@ -65,8 +65,6 @@ async function updateSettings(){
         units: await store.getData("units")
     }
 
-    console.log(newSettings)
-
     for(i=0; i<rulerWindows.length; i++){
         rulerWindows[i].webContents.send("render-update-settings", newSettings)
     }
