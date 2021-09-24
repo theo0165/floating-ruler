@@ -2,7 +2,7 @@ const {app, BrowserWindow, ipcMain, Tray, Menu} = require("electron");
 const path = require('path');
 const store = require('./src/store');
 
-let rulerWindow;
+let rulerWindows = [];
 let settingsWindow;
 
 let trayIcon;
@@ -26,6 +26,10 @@ function createRuler(){
     })
 
     rulerWindow.loadURL("file://" + path.join(__dirname, 'src/app/ruler/ruler.html'));
+    rulerWindow.webContents.openDevTools();
+
+    rulerWindows.push(rulerWindow);
+    console.log(rulerWindows)
 }
 
 function createSettings(){
@@ -47,6 +51,20 @@ function createSettings(){
 
 function toggleTheme(){
     
+}
+
+async function updateSettings(){
+    let newSettings = {
+        autostart: await store.getData("autostart"),
+        theme: await store.getData("theme"),
+        units: await store.getData("units")
+    }
+
+    console.log(newSettings)
+
+    for(i=0; i<rulerWindows.length; i++){
+        rulerWindows[i].webContents.send("render-update-settings", newSettings)
+    }
 }
 
 function setup(){
@@ -97,18 +115,15 @@ ipcMain.on("quit", () => {
 })
 
 ipcMain.on("getVersion", (event, arg) => {
-    console.log("Get version")
     event.reply("sendVersion", app.getVersion());
 })
 
 ipcMain.on("save-setting", (event, arg) => {
-    console.log("IPC SAVE SETTING")
     store.setData(arg);
+    updateSettings();
 })
 
 ipcMain.on("get-settings", async (event) => {
-    console.log("IPC GET SETTING")
-
     let settings = {
         autostart: await store.getData("autostart"),
         theme: await store.getData("theme"),

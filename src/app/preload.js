@@ -1,4 +1,9 @@
 const { contextBridge, ipcRenderer } = require('electron');
+const store = require("../store")
+
+ipcRenderer.on("render-update-settings", (event, data) => {
+    settings = data;
+})
 
 contextBridge.exposeInMainWorld('preload_complete', true);
 contextBridge.exposeInMainWorld('api', {
@@ -21,7 +26,7 @@ contextBridge.exposeInMainWorld('api', {
         ipcRenderer.send("get-settings")
     },
     saveSettings: (data) => {
-        console.log("IPC RENDER SAVE SETTING")
+        console.log("IPC RENDER SAVE SETTING", data)
         ipcRenderer.send("save-setting", data);
     }
 })

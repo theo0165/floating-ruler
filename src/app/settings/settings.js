@@ -1,16 +1,11 @@
 let versionSpan = document.querySelector("#version");
+let settings;
 
 window.api.getVersion((version) => {
     versionSpan.innerHTML = "Version: " + version;
 });
 
 //window.api.saveSetting({autostart: true, theme: "light", units: "mm"})
-
-let settings = {
-    autostart: true,
-    theme: "dark",
-    units: "px"
-}
 
 let settingsElements = {
     autostart: document.querySelector("#autostart"),
@@ -19,14 +14,14 @@ let settingsElements = {
 }
 
 window.api.getSettings((data) => {
-    console.log("Settings", data)
     settings = data;
-    console.log(data.units)
 
     settingsElements.autostart.checked = data.autostart;
     settingsElements.theme.value = data.theme;
     settingsElements.units.value = data.units;
 });
+
+console.log(window.api.settings)
 
 function saveSettings(){
     window.api.saveSettings(settings);
@@ -46,3 +41,7 @@ settingsElements.units.addEventListener("change", () => {
     settings.units = settingsElements.units.value;
     saveSettings();
 })
+
+function updateSettings(){
+    console.log("UPDATE SETTINGS");
+}
