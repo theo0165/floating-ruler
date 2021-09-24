@@ -19,7 +19,6 @@ contextBridge.exposeInMainWorld('api', {
     },
     getSettings: (callback) => {
         ipcRenderer.on("send-settings", async (e, args) => {
-            console.log("Sending settings to document")
             this.settings = args;
             callback(args)
         })

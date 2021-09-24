@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "debug": "electron . --debug",
+    "debug": "DEVELOPMENT=true electron .",
     "build": "electron-packager . ruler --overwrite --platform=darwin --arch=all --icon=src/static/img/icon_placeholder.icns --prune=true --out=dist",
     "test": ""
   },

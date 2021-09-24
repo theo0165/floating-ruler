@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
     <title>Document</title>
     <link rel="stylesheet" href="../vars.css">
     <link rel="stylesheet" href="./ruler.css">
@@ -11,16 +13,7 @@
     <link rel="stylesheet" href="./themes/light.css">
 </head>
 <body>
-    <script>
-        let settings;
-
-        window.api.getSettings((data) => {
-            console.log(data)
-            settings = data;
-
-            document.querySelector("body").classList = data.theme;
-        })
-    </script>
+    <script src="./loadSettings.js"></script>
     <div id="quit" class="close_btn">
         <img src="../../static/img/close_btn_light.svg" alt="">
     </div>

@@ -19,8 +19,6 @@ window.api.getSettings((data) => {
     settingsElements.theme.value = data.theme;
 });
 
-console.log(window.api.settings)
-
 function saveSettings(){
     window.api.saveSettings(settings);
 }

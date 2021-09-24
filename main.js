@@ -26,7 +26,11 @@ function createRuler(){
     })
 
     rulerWindow.loadURL("file://" + path.join(__dirname, 'src/app/ruler/ruler.html'));
-    rulerWindow.webContents.openDevTools();
+
+    console.log(process.env)
+    if(process.env.DEVELOPMENT == 'true'){
+        rulerWindow.webContents.openDevTools();
+    }
 
     rulerWindows.push(rulerWindow);
 }
@@ -42,9 +46,11 @@ function createSettings(){
         }
     })
 
-    settingsWindow.webContents.openDevTools({
-        mode: "detach"
-    });
+    if(process.env.DEVELOPMENT == 'true'){
+        settingsWindow.webContents.openDevTools({
+            mode: "detach"
+        });
+    }
     settingsWindow.loadURL("file://" + path.join(__dirname, 'src/app/settings/settings.html'));
 }
 
