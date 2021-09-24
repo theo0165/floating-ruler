@@ -1,6 +1,6 @@
 const {app, BrowserWindow, ipcMain, Tray, Menu} = require("electron");
-
 const path = require('path');
+const store = require('./src/store');
 
 let rulerWindow;
 let settingsWindow;
@@ -39,6 +39,9 @@ function createSettings(){
         }
     })
 
+    settingsWindow.webContents.openDevTools({
+        mode: "detach"
+    });
     settingsWindow.loadURL("file://" + path.join(__dirname, 'src/app/settings/settings.html'));
 }
 
@@ -98,5 +101,21 @@ ipcMain.on("getVersion", (event, arg) => {
     event.reply("sendVersion", app.getVersion());
 })
 
+ipcMain.on("save-setting", (event, arg) => {
+    console.log("IPC SAVE SETTING")
+    store.setData(arg);
+})
+
+ipcMain.on("get-settings", async (event) => {
+    console.log("IPC GET SETTING")
+
+    let settings = {
+        autostart: await store.getData("autostart"),
+        theme: await store.getData("theme"),
+        units: await store.getData("units")
+    }
+
+    event.reply("send-settings", settings)
+})
+
 app.dock.hide();
-console.log(app.getVersion());
