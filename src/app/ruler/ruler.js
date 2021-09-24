@@ -1,5 +1,3 @@
-let settings;
-
 let bottomLine = document.querySelector("#width");
 let rightLine = document.querySelector("#height");
 
@@ -8,10 +6,12 @@ let widthInfo = document.querySelector("#width_info");
 
 let quitBtn = document.querySelector("#quit");
 
-let height = rightLine.offsetHeight - 82;
-let width = bottomLine.offsetWidth - 82;
+let height, width;
 
 function setSizeInfo(){
+    height = rightLine.offsetHeight - 82;
+    width = bottomLine.offsetWidth - 82;
+
     heightInfo.innerText = height + "px";
     widthInfo.innerText = width + "px";
 }
