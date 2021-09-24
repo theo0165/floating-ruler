@@ -9,9 +9,7 @@ window.api.getVersion((version) => {
 
 let settingsElements = {
     autostart: document.querySelector("#autostart"),
-    theme: document.querySelector("#theme"),
-    units: document.querySelector("#units"),
-    defaultPx: document.querySelector("#defaultPx")
+    theme: document.querySelector("#theme")
 }
 
 window.api.getSettings((data) => {
@@ -19,8 +17,6 @@ window.api.getSettings((data) => {
 
     settingsElements.autostart.checked = data.autostart;
     settingsElements.theme.value = data.theme;
-    settingsElements.units.value = data.units;
-    settingsElements.defaultPx.value = data.defaultPx
 });
 
 console.log(window.api.settings)
@@ -36,16 +32,6 @@ settingsElements.autostart.addEventListener("change", () => {
 
 settingsElements.theme.addEventListener("change", () => {
     settings.theme = settingsElements.theme.value;
-    saveSettings();
-})
-
-settingsElements.units.addEventListener("change", () => {
-    settings.units = settingsElements.units.value;
-    saveSettings();
-})
-
-settingsElements.defaultPx.addEventListener("change", () => {
-    settings.defaultPx = settingsElements.defaultPx.value;
     saveSettings();
 })
 

@@ -12,14 +12,6 @@
 </head>
 <body>
     <script>
-        let settings;
-
-        window.api.getSettings((data) => {
-            console.log(data)
-            settings = data;
-
-            document.querySelector("body").classList = data.theme;
-        })
     </script>
     <div id="quit" class="close_btn">
         <img src="../../static/img/close_btn_light.svg" alt="">

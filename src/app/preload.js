@@ -21,13 +21,22 @@ contextBridge.exposeInMainWorld('api', {
         console.log("Getting setting")
         ipcRenderer.on("send-settings", async (e, args) => {
             console.log("Sending settings to document")
+            this.settings = args;
             callback(args)
         })
         
         ipcRenderer.send("get-settings")
     },
+    getSetting: (key, callback) => {
+        ipcRenderer.on("send-setting", (e, args) => {
+            callback(args)
+        })
+
+        ipcRenderer.send("get-setting", key)
+    },
     saveSettings: (data) => {
         console.log("IPC RENDER SAVE SETTING", data)
         ipcRenderer.send("save-setting", data);
-    }
+    },
+    settings: null
 })

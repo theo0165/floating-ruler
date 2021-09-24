@@ -3,9 +3,7 @@ const Store = require("electron-store");
 const store = new Store({
     defaults: {
         autostart: true,
-        theme: "dark",
-        units: "px",
-        defaultPx: "16"
+        theme: "dark"
     }
 });
 
