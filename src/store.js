@@ -4,7 +4,8 @@ const store = new Store({
     defaults: {
         autostart: true,
         theme: "dark",
-        units: "px"
+        units: "px",
+        defaultPx: "16"
     }
 });
 

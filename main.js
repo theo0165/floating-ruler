@@ -34,7 +34,7 @@ function createRuler(){
 function createSettings(){
     settingsWindow = new BrowserWindow({
         width: 200,
-        height: 150,
+        height: 200,
         resizable: false,
         maximizable: false,
         webPreferences: {
@@ -130,7 +130,8 @@ ipcMain.on("get-settings", async (event) => {
     let settings = {
         autostart: await store.getData("autostart"),
         theme: await store.getData("theme"),
-        units: await store.getData("units")
+        units: await store.getData("units"),
+        defaultPx: await store.getData("defaultPx")
     }
 
     event.reply("send-settings", settings)
