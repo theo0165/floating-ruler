@@ -3,6 +3,7 @@ const store = require("../store")
 
 ipcRenderer.on("render-update-settings", (event, data) => {
     settings = data;
+    document.body.classList = data.theme;
 })
 
 contextBridge.exposeInMainWorld('preload_complete', true);

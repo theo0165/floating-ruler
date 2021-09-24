@@ -1,0 +1,23 @@
+.dark{
+    background-color: rgba(var(--dark-background-color), var(--opacity));
+}
+
+.dark .ruler_right{
+    border-right: 1px solid var(--dark-line-color);
+}
+
+.dark .ruler_left{
+    border-left: 1px solid var(--dark-line-color);
+}
+
+.dark .ruler_top{
+    border-top: 1px solid var(--dark-line-color);
+}
+
+.dark .ruler_bottom{
+    border-bottom: 1px solid var(--dark-line-color);
+}
+
+.dark #width_info, .dark #height_info{
+    color: var(--dark-text-color);
+}

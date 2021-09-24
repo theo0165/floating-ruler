@@ -17,7 +17,12 @@
 }
 
 :root{
-    --background-color: 51, 51, 51;
+    --dark-background-color: 51, 51, 51;
+    --light-background-color: 212, 212, 212;
+    --dark-text-color: white;
+    --light-text-color: white;
+    --dark-line-color: white;
+    --light-line-color: white;
     --opacity: .3;
     --font: 'Roboto', sans-serif
 }

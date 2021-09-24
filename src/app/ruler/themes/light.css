@@ -1,0 +1,23 @@
+.light{
+    background-color: rgba(var(--light-background-color), var(--opacity));
+}
+
+.light .ruler_right{
+    border-right: 1px solid var(--light-line-color);
+}
+
+.light .ruler_left{
+    border-left: 1px solid var(--light-line-color);
+}
+
+.light .ruler_top{
+    border-top: 1px solid var(--light-line-color);
+}
+
+.light .ruler_bottom{
+    border-bottom: 1px solid var(--light-line-color);
+}
+
+.light #width_info, .light #height_info{
+    color: var(--light-text-color);
+}

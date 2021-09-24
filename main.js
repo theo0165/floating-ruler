@@ -29,7 +29,6 @@ function createRuler(){
     rulerWindow.webContents.openDevTools();
 
     rulerWindows.push(rulerWindow);
-    console.log(rulerWindows)
 }
 
 function createSettings(){
@@ -50,7 +49,13 @@ function createSettings(){
 }
 
 function toggleTheme(){
-    
+    if(store.getData("theme") == "dark"){
+        store.setData("theme", "light");
+    }else{
+        store.setData("theme", "dark");
+    }
+
+    updateSettings();
 }
 
 async function updateSettings(){

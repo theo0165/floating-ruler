@@ -14,7 +14,7 @@ body {
     font-family: var(--font);
     font-weight: 300;
     overflow: auto;
-    background: rgba(var(--background-color), var(--opacity));
+    /*background: rgba(var(--background-color), var(--opacity));*/
 }
 
 /* TODO: fix cursor as pointer. currently not working correct. */
@@ -59,25 +59,25 @@ body {
 
 .ruler_right{
     right: 40px;
-    border-right: 1px solid white;
+    /*border-right: 1px solid white;*/
     height: 100%;
 }
 
 .ruler_left{
     left: 40px;
-    border-left: 1px solid white;
+    /*border-left: 1px solid white;*/
     height: 100%;
 }
 
 .ruler_top{
     top: 40px;
-    border-top: 1px solid white;
+    /*border-top: 1px solid white;*/
     width: 100%;
 }
 
 .ruler_bottom{
     bottom: 40px;
-    border-bottom: 1px solid white;
+    /*border-bottom: 1px solid white;*/
     width: 100%;
 }
 
@@ -112,6 +112,6 @@ body {
 }
 
 #width_info, #height_info{
-    color: white;
+    /*color: white;*/
     font-size: 18px;
 }
