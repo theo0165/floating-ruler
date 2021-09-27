@@ -74,6 +74,10 @@ async function updateSettings(){
     for(i=0; i<rulerWindows.length; i++){
         rulerWindows[i].webContents.send("render-update-settings", newSettings)
     }
+
+    app.setLoginItemSettings({
+        openAtLogin: newSettings.autostart
+    })
 }
 
 function setup(){

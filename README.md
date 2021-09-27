@@ -3,7 +3,6 @@
 ### Settings:
 * Open on login
 * Toggle light/dark theme
-* Units
 
 
 ### Todo
@@ -11,5 +10,5 @@
 * [x] Settings page
 * [x] Persistent storage
 * [x] Sync theme with rulers realtime
-* [ ] Light/dark theme on settings page
-* [ ] Implement start on login
+* [x] Light/dark theme on settings page
+* [x] Implement start on login
