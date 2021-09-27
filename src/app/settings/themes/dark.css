@@ -1,0 +1,4 @@
+.dark{
+    background-color: rgb(var(--dark-background-color));
+    color: var(--dark-text-color)
+}

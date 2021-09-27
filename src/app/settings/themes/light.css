@@ -1,0 +1,4 @@
+.light{
+    background-color: rgb(var(--light-background-color));
+    color: var(--light-text-color-settings)
+}
