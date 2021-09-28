@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "debug": "DEVELOPMENT=true electron .",
-    "build": "electron-packager . ruler --overwrite --platform=darwin --arch=all --icon=src/static/img/icon_placeholder.icns --prune=true --out=dist",
+    "build": "electron-packager . 'Floating Ruler' --overwrite --platform=darwin --arch=all --icon=buildResources/icons/icon@512px.icns --prune=true --out=dist",
     "test": ""
   },
   "repository": {

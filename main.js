@@ -81,7 +81,7 @@ async function updateSettings(){
 }
 
 function setup(){
-    trayIcon = new Tray(path.join(__dirname, "src/static/img/icon_test.png"));
+    trayIcon = new Tray(path.join(__dirname, "buildResources/icons/tray/tray_icon.png"));
 
     const trayTemplate = [
         {
