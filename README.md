@@ -9,7 +9,7 @@ Optimized for MacOS. Not tested on Windows or Linux.
 * Launch on login
 
 ### Download
-You can download the latest version of Floating Ruler from [here](https://githu.com/theo0165/floating-ruler/releases/latest/download/floating-ruler.zip) or by going to the repo release page.
+You can download the latest version of Floating Ruler from [here](https://github.com/theo0165/floating-ruler/releases/latest/download/floating-ruler.zip) or by going to the repo release page.
 
 ### Settings
 * Open on login
