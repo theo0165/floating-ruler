@@ -4,6 +4,7 @@ Optimized for MacOS. Not tested on Windows or Linux.
 
 ### Features
 * Semi transparent, floating window
+* Multible rulers simultaneously
 * Ruler guidelines
 * Light/dark theme
 * Launch on login
@@ -26,3 +27,5 @@ You can download the latest version of Floating Ruler from [here](https://githu.
 ### Known bugs
 * Toggle theme not working from time to time
     * Won't work when opening multible rulers
+* Blurry tray icon
+* No pointer cursor on close button
