@@ -179,4 +179,10 @@ ipcMain.on("get-setting", async (event, key) => {
   event.reply("send-setting", await store.getData(key));
 });
 
+<<<<<<< HEAD
 app.dock.hide();
+=======
+if (process.platform === 'darwin') {
+    app.dock.hide();
+}
+>>>>>>> eddc523 (Added back the hide on MacOS)
