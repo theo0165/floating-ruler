@@ -7,6 +7,7 @@
     "start": "electron .",
     "debug": "DEVELOPMENT=true electron .",
     "build": "electron-packager . 'Floating Ruler' --overwrite --platform=darwin --arch=all --icon=buildResources/icons/icon@512px.icns --prune=true --out=dist",
+    "build-win": "electron-packager . \"Floating Ruler\" --overwrite --platform=win32 --arch=all --icon=buildResources/icons/icon@512px.icns --prune=true --out=dist",
     "test": ""
   },
   "repository": {
