@@ -117,13 +117,8 @@ function setup() {
 }
 
 app.whenReady().then(() => {
-  setup();
-  //createRuler();
-
-  app.on("activate", function () {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
-});
+    setup();
+})
 
 app.on("window-all-closed", function () {
   if (process.platform !== "darwin") app.quit();
