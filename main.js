@@ -1,11 +1,4 @@
-const {
-  app,
-  BrowserWindow,
-  ipcMain,
-  Tray,
-  Menu,
-  nativeImage,
-} = require("electron");
+const {app, BrowserWindow, ipcMain, Tray, Menu, nativeImage} = require("electron");
 const path = require("path");
 const store = require("./src/store");
 
@@ -92,14 +85,9 @@ async function updateSettings() {
 }
 
 function setup() {
-  //   trayIcon = new Tray(
-  //     path.join(__dirname, "buildResources/icons/tray/ruler_white.png")
-  //   );
-
-  const image = nativeImage.createFromPath(
-    path.join(__dirname, "buildResources/icons/tray/ruler_white.png")
-  );
-  tray = new Tray(image.resize({ width: 32, height: 32 }));
+    const image = nativeImage.createFromPath(
+       path.join(__dirname, "buildResources/icons/tray/tray_icon.png"));
+    trayIcon = new Tray(image.resize({ width: 32, height: 32 }));
 
   const trayTemplate = [
     {
