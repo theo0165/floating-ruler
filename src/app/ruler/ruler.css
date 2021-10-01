@@ -32,8 +32,19 @@ body {
 
 .drag{
     -webkit-app-region: drag;
+}
+
+#drag-upper {
     position: absolute;
-    top: 0;
+    height: 40px;
+    top: 0px;
+    left: 0;
+    right: 40px;
+}
+
+#drag-lower {
+    position: absolute;
+    top: 40px;
     bottom: 0;
     left: 0;
     right: 0;

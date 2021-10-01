@@ -179,4 +179,6 @@ ipcMain.on("get-setting", async (event, key) => {
   event.reply("send-setting", await store.getData(key));
 });
 
-app.dock.hide();
+if (process.platform === 'darwin') {
+    app.dock.hide();
+}
