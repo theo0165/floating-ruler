@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, Tray, Menu, nativeImage} = require("electron");
+const {app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, nativeTheme} = require("electron");
 const path = require("path");
 const store = require("./src/store");
 
@@ -84,36 +84,55 @@ async function updateSettings() {
   });
 }
 
+function getTrayIcon(){
+    console.log(nativeTheme.shouldUseDarkColors);
+    if(nativeTheme.shouldUseDarkColors){
+        const image = nativeImage.createFromPath(
+            path.join(__dirname, "buildResources/icons/tray/tray_icon_darkmode.png"));
+        icon = image.resize({ width: 32, height: 32 });
+
+        return icon
+    }else{
+        const image = nativeImage.createFromPath(
+            path.join(__dirname, "buildResources/icons/tray/tray_icon.png"));
+        icon = image.resize({ width: 32, height: 32 });
+
+        return icon;
+    }
+}
+
+nativeTheme.on('updated', () => {
+    trayIcon.setImage(getTrayIcon());
+})
+
 function setup() {
-    const image = nativeImage.createFromPath(
-       path.join(__dirname, "buildResources/icons/tray/tray_icon.png"));
-    trayIcon = new Tray(image.resize({ width: 32, height: 32 }));
+    trayIcon = new Tray(getTrayIcon())
 
-  const trayTemplate = [
+    const trayTemplate = [
     {
-      label: "New ruler",
-      click: createRuler,
+        label: "New ruler",
+        click: createRuler,
     },
     {
-      label: "Toggle theme",
-      click: toggleTheme,
+        label: "Toggle theme",
+        click: toggleTheme,
     },
     {
-      label: "Settings",
-      click: createSettings,
+        label: "Settings",
+        click: createSettings,
     },
     {
-      type: "separator",
+        type: "separator",
     },
     {
-      label: "Quit",
-      accelerator: "Command+Q",
-      click: () => app.quit(),
+        label: "Quit",
+        accelerator: "Command+Q",
+        click: () => app.quit(),
     },
-  ];
+    ];
 
-  const menu = Menu.buildFromTemplate(trayTemplate);
-  trayIcon.setContextMenu(menu);
+    const menu = Menu.buildFromTemplate(trayTemplate);
+    trayIcon.setContextMenu(menu);
 }
 
 app.whenReady().then(() => {
