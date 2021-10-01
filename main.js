@@ -7,6 +7,16 @@ let settingsWindow;
 
 let trayIcon;
 
+const instanceLock = app.requestSingleInstanceLock();
+
+if(!instanceLock) {
+    app.quit();
+} else {
+    // NOTE(patrik): If we are the main process with the instance lock
+    // then we can get notifyed when other instances trys to open
+    // app.on('second-instance', (event, cmdLine, cwd) => {});
+}
+
 console.log(path.join(__dirname, "src/app/ruler/index.html"));
 
 function createRuler() {
