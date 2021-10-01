@@ -7,7 +7,7 @@
     "start": "electron .",
     "debug": "DEVELOPMENT=true electron .",
     "build:mac": "electron-packager . 'Floating Ruler' --overwrite --platform=darwin --arch=all --icon=buildResources/icons/icon@512px.icns --prune=true --out=dist",
-    "build:win32": "electron-packager . \"Floating Ruler\" --overwrite --platform=win32 --arch=all --icon=buildResources/icons/icon@512px.icns --prune=true --out=dist",
+    "build:win32": "electron-packager . \"Floating Ruler\" --overwrite --platform=win32 --arch=all --icon=buildResources/icons/icon@512px.ico --prune=true --out=dist",
     "build:linux": "electron-packager . 'Floating Ruler' --overwrite --platform=linux --arch=all --icon=buildResources/icons/icon@512px.icns --prune=true --out=dist",
     "test": ""
   },
