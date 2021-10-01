@@ -6,8 +6,12 @@ let widthInfo = document.querySelector("#width_info");
 
 let quitBtn = document.querySelector("#quit");
 
+// Current height and width of window
 let height, width;
 
+/**
+ * Display current width and height on page
+ */
 function setSizeInfo(){
     height = rightLine.offsetHeight - 82;
     width = bottomLine.offsetWidth - 82;
@@ -16,6 +20,7 @@ function setSizeInfo(){
     widthInfo.innerText = width + "px";
 }
 
+// Update size info when window is rezised
 window.addEventListener("resize", function() {
     setSizeInfo();
 })

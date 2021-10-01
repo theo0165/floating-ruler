@@ -19,6 +19,12 @@ if(!instanceLock) {
 
 console.log(path.join(__dirname, "src/app/ruler/index.html"));
 
+/**
+ * Create new ruler window and add to list of open ruler windows
+ * 
+ * @requires electron/BrowserWindow
+ * @requires path
+ */
 function createRuler() {
   rulerWindow = new BrowserWindow({
     width: 482,
@@ -39,66 +45,99 @@ function createRuler() {
     "file://" + path.join(__dirname, "src/app/ruler/ruler.html")
   );
 
-  console.log(process.env);
+  // Open devtool if debug script is run or environment variable DEVELOPMENT is true
   if (process.env.DEVELOPMENT == "true") {
     rulerWindow.webContents.openDevTools();
   }
 
+  // Add newly created ruler window to list of windows to be able to push events to all instances
   rulerWindows.push(rulerWindow);
 }
 
+/**
+ * Create settings window
+ * 
+ * @requires electron/BrowserWindow
+ * @requires path
+ */
 function createSettings() {
   settingsWindow = new BrowserWindow({
     width: 200,
     height: 150,
-    resizable: false,
+    resizable: false, // Kepp settings window specified size to avoid sizing issues.
     maximizable: false,
     webPreferences: {
       preload: path.join(__dirname, "src/app/preload.js"),
     },
   });
 
+  // Open devtool if debug script is run or environment variable DEVELOPMENT is true
+  // Opens as detatched by default becuase of small window size
   if (process.env.DEVELOPMENT == "true") {
     settingsWindow.webContents.openDevTools({
       mode: "detach",
     });
   }
+
   settingsWindow.loadURL(
     "file://" + path.join(__dirname, "src/app/settings/settings.html")
   );
 }
 
+/**
+ * Toggle theme in settings. Calls to update settings on all open ruler windows
+ */
 function toggleTheme() {
-  if (store.getData("theme") == "dark") {
-    store.setData("theme", "light");
-  } else {
-    store.setData("theme", "dark");
-  }
+    // Self explanatory, set theme to light if currently dark and to dark if currently light.
+    if (store.getData("theme") == "dark") {
+        store.setData("theme", "light");
+    } else {
+        store.setData("theme", "dark");
+    }
 
-  updateSettings();
+    updateSettings();
 }
 
+/**
+ * Update settings for all open ruler windows
+ * 
+ * @async
+ * @requires store
+ */
 async function updateSettings() {
-  let newSettings = {
-    autostart: await store.getData("autostart"),
-    theme: await store.getData("theme"),
-    units: await store.getData("units"),
-  };
+    let newSettings = {
+        autostart: await store.getData("autostart"),
+        theme: await store.getData("theme"),
+        units: await store.getData("units"),
+    };
 
-  for (i = 0; i < rulerWindows.length; i++) {
-    rulerWindows[i].webContents.send("render-update-settings", newSettings);
-  }
+    // Go through all open ruler windows and send render-update-settings event
+    for (i = 0; i < rulerWindows.length; i++) {
+        rulerWindows[i].webContents.send("render-update-settings", newSettings);
+    }
 
-  app.setLoginItemSettings({
-    openAtLogin: newSettings.autostart,
-  });
+    /**
+     * Set open on login for mac
+     * 
+     * @see https://www.electronjs.org/docs/api/app#appsetloginitemsettingssettings-macos-windows
+     */
+    app.setLoginItemSettings({
+        openAtLogin: newSettings.autostart,
+    });
 }
 
+/**
+ * Check current system theme and return correct tray icon
+ * 
+ * @returns nativeImage
+ */
 function getTrayIcon(){
-    console.log(nativeTheme.shouldUseDarkColors);
+    // Check if current system theme is dark
     if(nativeTheme.shouldUseDarkColors){
         const image = nativeImage.createFromPath(
             path.join(__dirname, "buildResources/icons/tray/tray_icon_darkmode.png"));
+        
+        // Set icon to 32x32px
         icon = image.resize({ width: 32, height: 32 });
 
         return icon
@@ -111,10 +150,16 @@ function getTrayIcon(){
     }
 }
 
+// Update tray icon when system theme is updated
 nativeTheme.on('updated', () => {
     trayIcon.setImage(getTrayIcon());
 })
 
+/**
+ * Setup tray icon and menu
+ * @see https://www.electronjs.org/docs/latest/api/tray/
+ * @see https://www.electronjs.org/docs/latest/api/menu/
+ */
 function setup() {
     trayIcon = new Tray(getTrayIcon())
 
@@ -145,27 +190,33 @@ function setup() {
     trayIcon.setContextMenu(menu);
 }
 
+// Check when app is ready and setup tray menu
 app.whenReady().then(() => {
     setup();
 })
 
+// Quit program if not on mac
 app.on("window-all-closed", function () {
   if (process.platform !== "darwin") app.quit();
 });
 
+// Quit last focused window when quit event is emitted from renderer
 ipcMain.on("quit", () => {
   BrowserWindow.getFocusedWindow().close();
 });
 
+// Send version number from package.json to renderer
 ipcMain.on("getVersion", (event, arg) => {
   event.reply("sendVersion", app.getVersion());
 });
 
+// Save and update settings from settings pahe
 ipcMain.on("save-setting", (event, arg) => {
   store.setData(arg);
   updateSettings();
 });
 
+// Send all settings to ruler window that sent the event emit
 ipcMain.on("get-settings", async (event) => {
   let settings = {
     autostart: await store.getData("autostart"),
@@ -175,8 +226,10 @@ ipcMain.on("get-settings", async (event) => {
   event.reply("send-settings", settings);
 });
 
+// Send one settings item to ruler window that sent the event emit
 ipcMain.on("get-setting", async (event, key) => {
   event.reply("send-setting", await store.getData(key));
 });
 
+// Hide app from dock on MacOS
 app.dock.hide();
