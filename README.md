@@ -3,7 +3,7 @@ Simple floating ruler for measuring pixels on screen.
 Optimized for MacOS. Not tested on Windows or Linux.
 Currently in beta
 
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/theo0165/floating-ruler/dev/electron/main) [![Node.js Build](https://github.com/theo0165/floating-ruler/actions/workflows/Nodejs-Build.yml/badge.svg)](https://github.com/theo0165/floating-ruler/actions/workflows/Nodejs-Build.yml) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/theo0165/floating-ruler?include_prereleases)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/theo0165/floating-ruler/dev/electron/main) [![MacOS Build](https://github.com/theo0165/floating-ruler/actions/workflows/MacOS%20Build.yml/badge.svg)](https://github.com/theo0165/floating-ruler/actions/workflows/MacOS%20Build.yml)[![Windows Build](https://github.com/theo0165/floating-ruler/actions/workflows/Windows%20Build.yml/badge.svg)](https://github.com/theo0165/floating-ruler/actions/workflows/Windows%20Build.yml)[![Linux Build](https://github.com/theo0165/floating-ruler/actions/workflows/Linux%20Build.yml/badge.svg)](https://github.com/theo0165/floating-ruler/actions/workflows/Linux%20Build.yml) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/theo0165/floating-ruler?include_prereleases)
 
 
 ### Features
