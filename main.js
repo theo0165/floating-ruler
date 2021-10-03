@@ -17,7 +17,7 @@ if(!instanceLock) {
     // app.on('second-instance', (event, cmdLine, cwd) => {});
 }
 
-console.log(path.join(__dirname, "src/app/ruler/index.html"));
+// console.log(path.join(__dirname, "src/app/ruler/index.html"));
 
 /**
  * Create new ruler window and add to list of open ruler windows
@@ -38,6 +38,7 @@ function createRuler() {
     alwaysOnTop: true,
     webPreferences: {
       preload: path.join(__dirname, "src/app/preload.js"),
+      nativeWindowOpen: true,
     },
   });
 
@@ -68,6 +69,7 @@ function createSettings() {
     maximizable: false,
     webPreferences: {
       preload: path.join(__dirname, "src/app/preload.js"),
+      nativeWindowOpen: true,
     },
   });
 
@@ -202,7 +204,9 @@ app.on("window-all-closed", function () {
 
 // Quit last focused window when quit event is emitted from renderer
 ipcMain.on("quit", () => {
-  BrowserWindow.getFocusedWindow().close();
+  const quitWindow = BrowserWindow.getFocusedWindow();
+  quitWindow.close();
+  rulerWindows = rulerWindows.filter(w => w !== quitWindow);
 });
 
 // Send version number from package.json to renderer
