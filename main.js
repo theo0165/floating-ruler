@@ -90,13 +90,10 @@ function createSettings() {
  * Toggle theme in settings. Calls to update settings on all open ruler windows
  */
 function toggleTheme() {
-    // Self explanatory, set theme to light if currently dark and to dark if currently light.
-    if (store.getData("theme") == "dark") {
-        store.setData("theme", "light");
-    } else {
-        store.setData("theme", "dark");
-    }
-
+    const oppositeTheme = store.getData("theme") == "dark" 
+                                                    ? 'light' 
+                                                    : 'dark';
+    store.setData('theme', oppositeTheme);
     updateSettings();
 }
 
@@ -193,9 +190,7 @@ function setup() {
 }
 
 // Check when app is ready and setup tray menu
-app.whenReady().then(() => {
-    setup();
-})
+app.whenReady().then(setup);
 
 // Quit program if not on mac
 app.on("window-all-closed", function () {

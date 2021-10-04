@@ -21,13 +21,9 @@ function setSizeInfo(){
 }
 
 // Update size info when window is rezised
-window.addEventListener("resize", function() {
-    setSizeInfo();
-})
+window.addEventListener("resize", setSizeInfo)
 
-document.addEventListener("DOMContentLoaded", function(event) {
-    setSizeInfo();
-});
+document.addEventListener("DOMContentLoaded", setSizeInfo);
 
 quitBtn.addEventListener('click', function() {
     window.api.quit();
