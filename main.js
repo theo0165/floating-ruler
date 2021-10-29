@@ -21,7 +21,7 @@ if(!instanceLock) {
 
 /**
  * Create new ruler window and add to list of open ruler windows
- * 
+ *
  * @requires electron/BrowserWindow
  * @requires path
  */
@@ -57,7 +57,7 @@ function createRuler() {
 
 /**
  * Create settings window
- * 
+ *
  * @requires electron/BrowserWindow
  * @requires path
  */
@@ -90,8 +90,8 @@ function createSettings() {
  * Toggle theme in settings. Calls to update settings on all open ruler windows
  */
 function toggleTheme() {
-    const oppositeTheme = store.getData("theme") == "dark" 
-                                                    ? 'light' 
+    const oppositeTheme = store.getData("theme") == "dark"
+                                                    ? 'light'
                                                     : 'dark';
     store.setData('theme', oppositeTheme);
     updateSettings();
@@ -99,7 +99,7 @@ function toggleTheme() {
 
 /**
  * Update settings for all open ruler windows
- * 
+ *
  * @async
  * @requires store
  */
@@ -110,16 +110,12 @@ async function updateSettings() {
         units: await store.getData("units"),
     };
 
-    // Go through all open ruler windows and send render-update-settings event
     for (i = 0; i < rulerWindows.length; i++) {
-        rulerWindows[i].webContents.send("render-update-settings", newSettings);
+        // NOTE(patrik): Using reload here to force the windows to apply
+        // the new theme
+        rulerWindows[i].reload();
     }
 
-    /**
-     * Set open on login for mac
-     * 
-     * @see https://www.electronjs.org/docs/api/app#appsetloginitemsettingssettings-macos-windows
-     */
     app.setLoginItemSettings({
         openAtLogin: newSettings.autostart,
     });
@@ -127,7 +123,7 @@ async function updateSettings() {
 
 /**
  * Check current system theme and return correct tray icon
- * 
+ *
  * @returns nativeImage
  */
 function getTrayIcon(){
@@ -135,7 +131,7 @@ function getTrayIcon(){
     if(nativeTheme.shouldUseDarkColors){
         const image = nativeImage.createFromPath(
             path.join(__dirname, "buildResources/icons/tray/tray_icon_darkmode.png"));
-        
+
         // Set icon to 32x32px
         icon = image.resize({ width: 32, height: 32 });
 
